@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tenant Dashboard Design System - Professional Property Management UI */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 210 11% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 11% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 11% 15%;
+
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 210 100% 97%;
+    --primary-dark: 210 100% 45%;
+
+    --secondary: 210 17% 98%;
+    --secondary-foreground: 210 11% 15%;
+
+    --muted: 210 17% 96%;
+    --muted-foreground: 210 11% 46%;
+
+    --accent: 210 17% 98%;
+    --accent-foreground: 210 11% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 76% 95%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --warning-light: 38 92% 95%;
+
+    --info: 210 100% 50%;
+    --info-foreground: 0 0% 100%;
+    --info-light: 210 100% 97%;
+
+    --border: 210 20% 92%;
+    --input: 210 20% 92%;
+    --ring: 210 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Clean minimal dashboard colors */
+    --dashboard-bg: 210 17% 98%;
+    --sidebar-bg: 0 0% 100%;
+    --sidebar-border: 210 20% 92%;
+    --sidebar-active: 210 100% 97%;
+    --sidebar-hover: 210 17% 98%;
+    
+    /* Clean gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(210 100% 50%), hsl(210 100% 45%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(210 17% 99%));
+    --gradient-stats: linear-gradient(135deg, hsl(210 100% 50%), hsl(210 100% 45%));
+    
+    /* Minimal shadows */
+    --shadow-card: 0 1px 3px 0 hsl(210 20% 92% / 0.5);
+    --shadow-hover: 0 4px 6px -1px hsl(210 20% 92% / 0.3);
+    --shadow-modal: 0 25px 50px -12px hsl(210 20% 92% / 0.5);
+    
+    /* Smooth transitions */
+    --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  /* Dashboard specific components */
+  .dashboard-card {
+    @apply bg-card border border-border rounded-lg shadow-[var(--shadow-card)] transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-hover)];
+  }
+  
+  .stats-card {
+    @apply dashboard-card p-6 bg-gradient-to-br from-white to-slate-50;
+  }
+  
+  .sidebar-nav-item {
+    @apply flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-lg transition-[var(--transition-fast)] hover:bg-[hsl(var(--sidebar-hover))] hover:text-primary;
+  }
+  
+  .sidebar-nav-item.active {
+    @apply bg-[hsl(var(--sidebar-active))] text-primary border-r-2 border-primary;
+  }
+  
+  .property-card {
+    @apply dashboard-card overflow-hidden hover:scale-[1.02] cursor-pointer;
+  }
+  
+  .status-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-[hsl(var(--primary-dark))] px-4 py-2 rounded-lg font-medium transition-[var(--transition-fast)] shadow-sm hover:shadow-md;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-accent px-4 py-2 rounded-lg font-medium transition-[var(--transition-fast)] border border-border;
+  }
+  
+  .form-input {
+    @apply w-full px-3 py-2 border border-input rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-[var(--transition-fast)];
+  }
+  
+  .filter-section {
+    @apply bg-card border border-border rounded-lg p-4 shadow-[var(--shadow-card)];
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
